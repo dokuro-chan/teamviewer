@@ -1,0 +1,15 @@
+post_install() {
+   echo "The Teamviewer daemon must be running for Teamviewer 11 to work."
+   echo "Systemd users enable the daemon by running: 'sudo systemctl enable teamviewerd'"
+   echo "OpenRC users copy the included daemon script(teamviewerd) to /etc/init.d"
+   echo "Then enable the daemon by running: 'sudo rc-update add teamviewerd default'"
+}
+
+post_upgrade() {
+   post_install
+}
+
+post_remove() {
+   rm -rf /opt/teamviewer
+}
+
